@@ -5,10 +5,11 @@
 ### Game Concept
 A single-player fantasy role-playing game (RPG) focusing on tactical party management and the utilization of a user-programmable system to pre-plan how characters will move, attack and use their abilities based on if/then triggers.
 
-### Target Audience
-
 ### Platform
 Windows PC
+
+### Look and Feel
+Use Godot Engine to make the game with 2D graphics and pixel sprites.
 
 ## Gameplay and Core Loop
 
@@ -182,3 +183,226 @@ Each character will begin either on the left, right or middle, and either in the
 
 ### Combat Flow
 Each round of combat sees each player character and enemy move and attack once. Initiative is calculated in between each round, and factors in the characters' Agility attribute.
+
+### Core Mechanics
+Attack and Defence are based on attributes for the given attack. All attributes have a component defining if it is related to attack or defence. Abilities will directly reference which attribute is used for the character to attack with it, and what attribute the defending enemy will use to try to block or evade the ability.
+
+### Special Combat Options
+Use consumable item: For example, use a potion on yourself or an ally
+Rush: Push an enemy 1 square and shift into the vacated space
+Coup de grace: Make a critical hit against a helpless enemy
+Grab: Sieze hold of an enemy, preventing both the player character and the enemy from moving or attacking until the player character releases, or the enemy breaks free (strength attribute check)
+
+### Magic/Abilities System
+
+All spells and abilities are able to be used either at-will, once per encounter, or once per long-rest.
+
+#### Martial Abilities
+Martial abilities are selected from the a pool of abilities at random for the player character to train in. Some abilities are restricted to certain classes, and others are available for all Martial classes.
+
+Mana is determined by willpower attribute.
+
+#### Arcane Magic
+Broad spell list of levelless spells which are either utility spells that don't improve, or damage spells which scale the the character's level.
+
+#### Divine Magic
+Divine characters must choose a God in character creation.
+
+Aurelius: God of Lawful Good
+Vorgath: God of Lawful Evil
+Raelis: God of Chaotic Good
+Thrull: God of Chaotic Evil
+
+There are four separate spell lists for "Good", "Evil", "Chaotic" and "Lawful". The spells have levels that must be reached in order to aquire them. A character can only select from the two spell lists related to the God they worship.
+
+#### Primal Magic
+Primal characters have access to a random selection of spells, similar to Martial abilities. Primal spells also have levels like Divine spells, and are divided into domains:
+
+- Fire
+- Water
+- Earth
+- Air
+
+The more that a character uses spells of a certain domain, the more likely they are to see higher level spells from that domain to choose from when levelling up.
+
+### Status Effects and Conditions
+- Blinded
+- Dazed
+- Deafened
+- Muted
+- Grabbed
+- Helpless
+- Immobilized
+- Marked
+- Petrified
+- Restrained
+- Slowed
+- Stunned
+- Unconscious
+- Weakened
+- Asleep
+- Hasted
+
+## Enemies and Monsters
+
+### Enemy Tags
+Enemies can have variations with any of these tags, which will control their HP, attack types and behaviour patterns:
+- Minion
+- Elite
+- Artillery
+- Brute
+- Lurker
+- Skirmisher
+- Soldier
+- Solo
+- Melee
+- Ranged
+- Flying
+
+### Monster list
+- Acolyte
+- Air Elemental
+- Aranea
+- Bandit
+- Banshee
+- Basilisk
+- Berserker
+- Black Bear
+- Black Dragon
+- Black Pudding
+- Blink Dog
+- Blood Elk
+- Blue Dragon
+- Boar
+- Boggart
+- Bone Construct
+- Bronze Construct
+- Bugbear
+- Burrowing Horror
+- Camel
+- Catoblepas
+- Cave Locust
+- Centaur
+- Chimera
+- Cobblehounds
+- Cockatrice
+- Couatl
+- Creeping Vines
+- Crypt Guardian
+- Cyclops
+- Deep One
+- Dire Wolf
+- Djinn
+- Draugr
+- Driver Ant
+- Dryad
+- Dwarf
+- Earth Elemental
+- Elephant
+- Elf
+- Estrie
+- Ettin
+- Eye of Terror
+- False Dragon
+- Fire Beetle
+- Fire Elemental
+- Fire Giant
+- Flesh Construct
+- Foxwoman
+- Frost Elf
+- Frost Giant
+- Gargoyle
+- Gelatinous Ooze
+- Ghost
+- Ghoul
+- Giant Aquatic Spider
+- Giant Centipede
+- Giant Crab
+- Giant Crocodile
+- Giant Mantis
+- Giant Phase Spider
+- Giant Scorpion
+- Giant Draco
+- Gnoll
+- Gnome
+- Goblin
+- Golem
+- Gorilla
+- Great White Shark
+- Green Dragon
+- Green Slime
+- Griffon
+- Grizzly Bear
+- Halfling
+- Harpy
+- Hellhound
+- Hobgoblin
+- Hooded Men
+- Hunting Dog
+- Hydra
+- Ifrit
+- Invisible Stalker
+- Iron Construct
+- Killer Bees
+- Kobold
+- Kraken
+- Lamia
+- Lich
+- Lion
+- Manticore
+- Medusa
+- Mimic
+- Mind Lasher
+- Minotaur
+- Mummy
+- Naga
+- Night Cat
+- Night Hag
+- Nightmare
+- Ogre
+- Owlbear
+- Panther
+- Phoenix
+- Pixie
+- Pseudodragon
+- Purple Worm
+- Red Cap
+- Red Dragon
+- Reptilian
+- Roc
+- Root Goblin
+- Root Witch
+- Rust Monster
+- Sabre-Toothed Cat
+- Satyr
+- Sea Hag
+- Shadow
+- Shambling Mound
+- Skeleton
+- Sky Giant
+- Sphinx
+- Storm Giant
+- Swine Thing
+- Tiger
+- Titan
+- Treant
+- Triton
+- Troll
+- Tyrannosaurus
+- Unicorn
+- Vampire
+- Vampire Bat
+- Viper
+- Warp Panther
+- Warrior Snail
+- Water Elemental
+- Werewolf
+- White Ape
+- White Dragon
+- Wight
+- Will-o-Wisp
+- Wolf
+- Wood Troll
+- Wyvern
+- Zombie
+
