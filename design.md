@@ -14,7 +14,7 @@ Use Godot Engine to make the game with 2D graphics and pixel sprites.
 ## Gameplay and Core Loop
 
 ### Core Loop
-Player creates a party, composes their Tactics (pre-programmed actions for their party members to take when certain conditions occur using if/else statements) selects a dungeon/area to adventure in, watches their party execute their Tactics, collects loop, and returns to a base/hub for upgrades and new adventures.
+Player creates a party, composes their Tactics (pre-programmed actions for their party members to take when certain conditions occur using if/else statements) selects a dungeon/area to adventure in, watches their party execute their Tactics, collects loot, and returns to a base/hub for upgrades and new adventures.
 
 ### Player Experience Goals
 Strategic depth in selecting which abilities and spells are gained upon levelling up, what gear to equip to their characters, what character attributes to put points into, and most importantly what Tactics to prepare for characters.
