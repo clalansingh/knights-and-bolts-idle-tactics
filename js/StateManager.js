@@ -7,16 +7,21 @@ export class StateManager {
         this.currentState = null;
         this.states = {};
 
-        // Initialize states (placeholders for now)
+        // Initialize states
         this.states['MENU'] = {
             update: (dt) => { },
             draw: (ctx) => {
-                ctx.fillStyle = 'white';
-                ctx.font = '30px Arial';
-                ctx.fillText('Main Menu - Press Enter to Start', 200, 300);
+                // UI handles drawing
             },
-            enter: () => console.log('Entered Menu State'),
-            exit: () => { }
+            enter: () => {
+                console.log('Entered Menu State');
+                this.game.uiManager.createMainMenuUI(() => {
+                    this.changeState('PARTY_CREATION');
+                });
+            },
+            exit: () => {
+                this.game.uiManager.clearUI();
+            }
         };
 
         this.states['PARTY_CREATION'] = {
@@ -43,25 +48,43 @@ export class StateManager {
             update: (dt) => {
                 // In a real game, we'd probably have a timer for turns or wait for animations
                 // For this prototype, we might step manually or slow it down
+                if (this.game.combatSystem) {
+                    this.game.uiManager.updateCombatUI(this.game.combatSystem);
+                }
             },
             draw: (ctx) => {
-                ctx.fillStyle = 'white';
-                ctx.fillText('Combat In Progress', 300, 50);
-                // Draw combat log
+                // UI handles most things, but we can draw the battlefield on canvas
+                // Draw background or grid
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, this.game.canvas.width, this.game.canvas.height);
+
+                // Draw entities (simplified)
                 if (this.game.combatSystem) {
-                    let y = 100;
-                    this.game.combatSystem.log.slice(-10).forEach(line => {
-                        ctx.fillText(line, 50, y);
-                        y += 30;
+                    // Draw enemies
+                    this.game.combatSystem.enemies.forEach((enemy, i) => {
+                        ctx.fillStyle = 'red';
+                        ctx.fillRect(500, 200 + (i * 100), 50, 50);
+                        ctx.fillStyle = 'white';
+                        ctx.font = '12px Inter';
+                        ctx.fillText(enemy.name, 500, 260 + (i * 100));
+                    });
+
+                    // Draw party (simplified)
+                    this.game.party.members.forEach((member, i) => {
+                        ctx.fillStyle = 'blue';
+                        ctx.fillRect(300, 200 + (i * 100), 50, 50);
+                        ctx.fillStyle = 'white';
+                        ctx.fillText(member.name, 300, 260 + (i * 100));
                     });
                 }
             },
             enter: () => {
                 console.log('Entered Combat State');
-                // Setup dummy combat
-                // In reality, this would be passed from the dungeon state
+                this.game.uiManager.createCombatUI(this.game.party, this.game.combatSystem);
             },
-            exit: () => { }
+            exit: () => {
+                this.game.uiManager.clearUI();
+            }
         };
 
         this.states['TACTICS_EDIT'] = {
@@ -87,9 +110,7 @@ export class StateManager {
 
         // Simple input listener for testing state switching
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && this.currentState === this.states['MENU']) {
-                this.changeState('PARTY_CREATION');
-            } else if (e.key === ' ' && this.currentState === this.states['COMBAT']) {
+            if (e.key === ' ' && this.currentState === this.states['COMBAT']) {
                 // Space to advance turn
                 if (this.game.combatSystem) {
                     this.game.combatSystem.nextTurn();
