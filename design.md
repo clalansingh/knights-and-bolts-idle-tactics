@@ -6,10 +6,10 @@
 A single-player fantasy role-playing game (RPG) focusing on tactical party management and the utilization of a user-programmable system to pre-plan how characters will move, attack and use their abilities based on if/then triggers.
 
 ### Platform
-Windows PC
+HTML5 and JavaScript
 
 ### Look and Feel
-Use Godot Engine to make the game with 2D graphics and pixel sprites.
+Make the game with 2D graphics and pixel sprites.
 
 ## Gameplay and Core Loop
 
