@@ -64,7 +64,8 @@ func execute_action(user: Character, action_data: Dictionary):
 	
 	if target:
 		if ability:
-			ability.execute(user, [target])
+			var targets: Array[Character] = [target]
+			ability.execute(user, targets)
 		else:
 			# Basic attack
 			print(user.character_name + " attacks " + target.character_name)

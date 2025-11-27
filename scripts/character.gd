@@ -25,10 +25,26 @@ var tactics: Array[Tactic] = []
 var is_dead: bool = false
 var team: int = 0 # 0 for Player, 1 for Enemy
 
+@export var character_class: CharacterClass
+
 func _ready():
+	if character_class:
+		apply_class_stats()
 	calculate_derived_stats()
 	current_hp = max_hp
 	current_mana = max_mana
+
+func apply_class_stats():
+	strength = character_class.base_strength
+	constitution = character_class.base_constitution
+	dexterity = character_class.base_dexterity
+	agility = character_class.base_agility
+	intelligence = character_class.base_intelligence
+	willpower = character_class.base_willpower
+	charisma = character_class.base_charisma
+	wisdom = character_class.base_wisdom
+	# TODO: Add starting abilities
+
 
 func calculate_derived_stats():
 	# Simple formula for now, can be tuned later
