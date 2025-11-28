@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './App.css';
 import {
   Sword, Shield, Heart, Zap, Play, Pause, RefreshCw,
   ChevronRight, Skull, Activity, Lock, Settings, User,
